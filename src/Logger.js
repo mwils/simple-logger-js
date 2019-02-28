@@ -2,7 +2,6 @@
 
 /**
  * 
- * @param {boolean} shouldAlert If true, the returned functions will alert on error, Default - false
  */
 function Logger(logLevel, logWriter) {
   this.logLevel = logLevel || 2;
@@ -65,7 +64,6 @@ Logger.prototype.error = function (message) {
     message = JSON.stringify(message);
   }
 
-  alert(message); // todo broadcast error
   this.logWriter(`Error: ${message}`);
 }
 
