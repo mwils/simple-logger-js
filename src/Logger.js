@@ -12,8 +12,13 @@ Logger.prototype.setLogLevel = function (level) {
   this.logLevel = level;
 }
 
+Logger.trace = 5;
+Logger.debug = 4;
+Logger.info = 3;
+Logger.warn = 2;
+Logger.error = 1;
 Logger.prototype.trace = function (message) {
-  if (this.logLevel < 5) {
+  if (this.logLevel < Logger.trace) {
     return;
   }
   if (typeof message === 'object') {
@@ -23,8 +28,9 @@ Logger.prototype.trace = function (message) {
   this.logWriter(`Trace: ${message}`);
 }
 
+
 Logger.prototype.debug = function (message) {
-  if (this.logLevel < 4) {
+  if (this.logLevel < Logger.debug) {
     return;
   }
   if (typeof message === 'object') {
@@ -35,7 +41,7 @@ Logger.prototype.debug = function (message) {
 }
 
 Logger.prototype.info = function (message) {
-  if (this.logLevel < 3) {
+  if (this.logLevel < Logger.info) {
     return;
   }
   if (typeof message === 'object') {
@@ -46,7 +52,7 @@ Logger.prototype.info = function (message) {
 }
 
 Logger.prototype.warn = function (message) {
-  if (this.logLevel < 2) {
+  if (this.logLevel < Logger.warn) {
     return;
   }
   if (typeof message === 'object') {
@@ -57,7 +63,7 @@ Logger.prototype.warn = function (message) {
 }
 
 Logger.prototype.error = function (message) {
-  if (this.logLevel < 1) {
+  if (this.logLevel < Logger.error) {
     return;
   }
   if (typeof message === 'object') {
